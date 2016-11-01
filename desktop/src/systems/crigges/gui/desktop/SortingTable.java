@@ -235,13 +235,15 @@ public class SortingTable {
 
 		public void run() {
 			while(true){
+				int selected = deviceBox.getSelectedIndex();
 				monitors = Lwjgl3ApplicationConfiguration.getMonitors();
 				if(monitors.length > monitorNames.length){
 					monitorNames = new String[monitors.length];
 					for (int i = 0; i < monitors.length; i++) {
-						monitorNames[i] = monitors[i].name;
+						monitorNames[i] = monitors[i].name + i;
 					}
 					deviceBox.setModel(new DefaultComboBoxModel<String>(monitorNames));
+					deviceBox.setSelectedIndex(selected);
 				}
 				try {
 					Thread.sleep(1000);
