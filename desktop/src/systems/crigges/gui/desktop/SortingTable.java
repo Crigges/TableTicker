@@ -159,13 +159,9 @@ public class SortingTable {
 					
 					@Override
 					public void run() {
-						for(Monitor m : monitors){
-							if(deviceBox.getSelectedItem().toString().equals(m.name)){
-								Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-								config.setFullscreenMode(config.getDisplayMode(m));
-								new Lwjgl3Application(new Ticker(), config);
-							}
-						}
+						Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
+						config.setFullscreenMode(config.getDisplayMode(monitors[deviceBox.getSelectedIndex()]));
+						new Lwjgl3Application(new Ticker(), config);
 					}
 				});
 				starter.start();
